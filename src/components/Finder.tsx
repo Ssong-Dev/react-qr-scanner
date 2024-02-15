@@ -54,7 +54,9 @@ export const Finder = (props: FinderProps) => {
                     border: `${border}px solid rgba(0, 0, 0, 0.1)`,
                     position: 'absolute',
                     width: '100%',
-                    height: '100%'
+                    height: '100%',
+                    borderTop: `${border * 3}px solid rgba(0, 0, 0, 0.1)`,
+                    borderBottom: `${border * 3}px solid rgba(0, 0, 0, 0.1)`
                 }}
             >
                 <path fill="none" d="M23,0 L0,0 L0,23" stroke={color} strokeWidth="5" />
