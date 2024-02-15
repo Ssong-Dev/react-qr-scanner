@@ -5,3 +5,5 @@ storybook-static/
 .idea
 
 .yarn/cache
+.Ds_Store
+.yarn
