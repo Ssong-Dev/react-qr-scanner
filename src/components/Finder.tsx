@@ -43,7 +43,7 @@ export const Finder = (props: FinderProps) => {
     }, [scanCount]);
 
     const calcTopBottomBorderHeight = () => {
-        return (window.innerHeight - (window.innerWidth - border * 2)) / 2;
+        return (window.innerHeight - 56 - (window.innerWidth - border * 2)) / 2;
     };
     return (
         <Fragment>
