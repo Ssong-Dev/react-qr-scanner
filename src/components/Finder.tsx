@@ -22,6 +22,7 @@ export const Finder = (props: FinderProps) => {
 
     const [color, setColor] = useState('rgba(255, 0, 0, 0.5)');
 
+    const [borderHeight, setBorderHeight] = useState(0);
     useEffect(() => {
         if (result?.getBarcodeFormat() == 11 && tracker) {
             setColor('rgba(255, 0, 0, 0.5)');
@@ -35,11 +36,15 @@ export const Finder = (props: FinderProps) => {
             setColor('rgba(255, 0, 0, 0.5)');
         }, scanDelay);
 
+        setBorderHeight(calcTopBottomBorderHeight());
         return () => {
             clearTimeout(timer);
         };
     }, [scanCount]);
 
+    const calcTopBottomBorderHeight = () => {
+        return (window.innerHeight - (window.innerWidth - border * 2)) / 2;
+    };
     return (
         <Fragment>
             {!hideCount && <Counter scanCount={scanCount} />}
@@ -51,12 +56,12 @@ export const Finder = (props: FinderProps) => {
                     left: 0,
                     zIndex: 1,
                     boxSizing: 'border-box',
-                    border: `${border}px solid rgba(0, 0, 0, 0.1)`,
+                    border: `${border}px solid rgba(0, 0, 0, 0.2)`,
                     position: 'absolute',
                     width: '100%',
                     height: '100%',
-                    borderTop: `${border * 3}px solid rgba(0, 0, 0, 0.1)`,
-                    borderBottom: `${border * 3}px solid rgba(0, 0, 0, 0.1)`
+                    borderTop: `${borderHeight}px solid rgba(0, 0, 0, 0.2)`,
+                    borderBottom: `${borderHeight}px solid rgba(0, 0, 0, 0.2)`
                 }}
             >
                 <path fill="none" d="M23,0 L0,0 L0,23" stroke={color} strokeWidth="5" />
